@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { PomodoroContext } from "../context/PomodoroContext";
 import Prompt from "./Prompt";
 
 export default function Terminal({inputRef, avaliableCommands, PS1}) {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState([]);
+
+  const { setStart } = useContext(PomodoroContext);
 
   const handleCommands = (rawCommand) => {
     let cmd = avaliableCommands[rawCommand];
@@ -25,7 +28,7 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
           newOutput.push({ input: input, output: commandResponse.content });
           break;
         case "action":
-          newOutput = commandResponse.fn(newOutput);
+          newOutput = commandResponse.fn(newOutput, setStart);
           break;
       }
 
@@ -35,7 +38,7 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
   };
 
   return (
-    <div className="whitespace-pre-line text-white bg-black w-screen h-screen p-2 overflow-y-scroll">
+    <div className="whitespace-pre-line text-white bg-black w-1/2 h-screen p-2 overflow-y-scroll">
       <section className="text-sm font-Roboto font-medium">
         {output.map((data, index) => {
           return (
@@ -44,7 +47,7 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
                 <span>{PS1}</span>
                 <p className="pl-1.5">{data.input}</p>
               </div>
-              <p>{data.output}</p>
+              <div>{data.output}</div>
             </div>
           )
         })}
