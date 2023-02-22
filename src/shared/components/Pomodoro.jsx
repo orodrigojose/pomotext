@@ -3,12 +3,12 @@ import { PomodoroContext } from "../context/PomodoroContext";
 
 const parseTime = (time) => (time < 10 ? `0${time}` : time);
 
-export default function Pomodoro({ customMinutes = 2, customSeconds = 0 }) {
+export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
   const { start } = useContext(PomodoroContext);
 
   const [minutes, setMinutes] = useState(customMinutes);
   const [seconds, setSeconds] = useState(customSeconds);
-  const [breakMinutes, setBreakMinutes] = useState(1);
+  const [breakMinutes, setBreakMinutes] = useState(5);
 
   const [breakTime, setBreakTime] = useState(false);
 
