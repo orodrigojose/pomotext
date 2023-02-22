@@ -10,13 +10,13 @@ function App() {
   useEffect(() => inputRef.current.focus(), []);
 
   return (
-    <div className="flex w-screen" onClick={() => inputRef.current.focus()}>
+    <div className="flex flex-row w-screen h-screen" onClick={() => inputRef.current.focus()}>
       <Terminal
         inputRef={inputRef}
         avaliableCommands={avaliableCommands}
         PS1={PS1}
       />
-      <Pomodoro className="w-1/2 flex-2" />
+      <Pomodoro />
     </div>
   );
 }

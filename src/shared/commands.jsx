@@ -1,16 +1,32 @@
 const avaliableCommands = {
   start: {
     type: "action",
-    fn: (history, setStart) => {
-      setStart(true)
-      return [...history, { input: "start", output: "started pomodoro" }];
+    fn: (history, setStart, input) => {
+      setStart(true);
+      return [
+        ...history,
+        {
+          input,
+          output: (
+            <p className="font-semibold text-green-400">started pomodoro...</p>
+          ),
+        },
+      ];
     },
   },
   stop: {
     type: "action",
-    fn: (history, setStart) => {
-      setStart(false)
-      return [...history, { input: "start", output: "started pomodoro" }];
+    fn: (history, setStart, input) => {
+      setStart(false);
+      return [
+        ...history,
+        {
+          input,
+          output: (
+            <p className="font-semibold text-red-400">stopped pomodoro.</p>
+          ),
+        },
+      ];
     },
   },
   help: {
@@ -18,15 +34,15 @@ const avaliableCommands = {
     content: (
       <ul>
         <li className="flex gap-11">
-          <span className="text-sky-700">help</span>
+          <span className="text-purple-600 font-bold">help</span>
           <p className="text-slate-300">show avaliable commands</p>
         </li>
-        <li className="flex gap-11">
-          <span className="text-sky-700">start</span>
+        <li className="flex gap-9">
+          <span className="text-purple-600 font-bold">start</span>
           <p className="text-slate-300">start/continue pomodoro timer</p>
         </li>
         <li className="flex gap-11">
-          <span className="text-sky-700">stop</span>
+          <span className="text-purple-600 font-bold">stop</span>
           <p className="text-slate-300">stop pomodoro timer</p>
         </li>
       </ul>
@@ -34,7 +50,7 @@ const avaliableCommands = {
   },
   clear: {
     type: "action",
-    fn: (history) => [],
+    fn: () => [],
   },
 };
 

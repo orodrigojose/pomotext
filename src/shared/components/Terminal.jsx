@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { PomodoroContext } from "../context/PomodoroContext";
 import Prompt from "./Prompt";
 
-export default function Terminal({inputRef, avaliableCommands, PS1}) {
+export default function Terminal({ inputRef, avaliableCommands, PS1 }) {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState([]);
 
@@ -13,7 +13,7 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
 
     return cmd && cmd !== null && cmd.type !== null
       ? cmd
-      : {type: "text", content: "Command not found\n"};
+      : { type: "text", content: "Unknown command\n" };
   };
 
   const handleKeyDown = (e) => {
@@ -28,7 +28,7 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
           newOutput.push({ input: input, output: commandResponse.content });
           break;
         case "action":
-          newOutput = commandResponse.fn(newOutput, setStart);
+          newOutput = commandResponse.fn(newOutput, setStart, input);
           break;
       }
 
@@ -38,18 +38,18 @@ export default function Terminal({inputRef, avaliableCommands, PS1}) {
   };
 
   return (
-    <div className="whitespace-pre-line text-white bg-black w-1/2 h-screen p-2 overflow-y-scroll">
-      <section className="text-sm font-Roboto font-medium">
+    <div className="whitespace-pre-line text-white bg-neutral-900 w-3/5 h-screen p-2 overflow-y-scroll">
+      <section className="text-sm font-RobotoMono font-medium">
         {output.map((data, index) => {
           return (
             <div key={index}>
-              <div className="flex opacity-90">
+              <div className="flex opacity-95">
                 <span>{PS1}</span>
                 <p className="pl-1.5">{data.input}</p>
               </div>
               <div>{data.output}</div>
             </div>
-          )
+          );
         })}
       </section>
 
