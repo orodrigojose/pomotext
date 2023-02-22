@@ -4,7 +4,17 @@ import Prompt from "./Prompt";
 
 export default function Terminal({ inputRef, avaliableCommands, PS1 }) {
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState([]);
+  const [output, setOutput] = useState([
+    {
+      type: "text",
+      output: (
+        <header className="flex gap-1.5 font-RobotoMono text-sm font-medium">
+          Type <p className="text-purple-600 font-bold drop-shadow-sm">help</p>
+          to see available commands
+        </header>
+      ),
+    },
+  ]);
 
   const { setStart } = useContext(PomodoroContext);
 
@@ -40,17 +50,17 @@ export default function Terminal({ inputRef, avaliableCommands, PS1 }) {
   return (
     <div className="whitespace-pre-line text-white bg-neutral-900 w-3/5 h-screen p-2 overflow-y-scroll no-scrollbar">
       <section className="text-sm font-RobotoMono font-medium">
-        {output.map((data, index) => {
-          return (
-            <div key={index}>
+        {output.map((data, index) => (
+          <div key={index}>
+            {data.input ? (
               <div className="flex opacity-95">
                 <span>{PS1}</span>
                 <p className="pl-1.5">{data.input}</p>
               </div>
-              <div>{data.output}</div>
-            </div>
-          );
-        })}
+            ) : null}
+            <div>{data.output}</div>
+          </div>
+        ))}
       </section>
 
       <Prompt
