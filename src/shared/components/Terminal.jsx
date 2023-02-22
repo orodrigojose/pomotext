@@ -38,7 +38,7 @@ export default function Terminal({ inputRef, avaliableCommands, PS1 }) {
   };
 
   return (
-    <div className="whitespace-pre-line text-white bg-neutral-900 w-3/5 h-screen p-2 overflow-y-scroll">
+    <div className="whitespace-pre-line text-white bg-neutral-900 w-3/5 h-screen p-2 overflow-y-scroll no-scrollbar">
       <section className="text-sm font-RobotoMono font-medium">
         {output.map((data, index) => {
           return (
