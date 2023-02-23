@@ -2,7 +2,7 @@ import { BsPauseCircle, BsClockFill, BsCheck2Square } from "react-icons/bs";
 
 export default function StatusBar({ paused, breakTime }) {
   return (
-    <section className="bg-slate-700 w-2/5 fixed bottom-0 flex">
+    <section className="bg-slate-700 sm:w-2/5 w-screen fixed bottom-0 flex">
       <div
         className={`flex items-center gap-1 align-center text-slate-200 text-sm font-RobotoMono pl-2 pr-4 bg-purple-600 font-medium ${
           !breakTime ? "rounded-r-xl" : null

@@ -42,7 +42,7 @@ export default function Pomodoro({ customMinutes = 1, customSeconds = 0 }) {
   const timerSeconds = parseTime(seconds);
 
   return (
-    <section className="w-2/5 h-full flex flex-col justify-center items-center bg-zinc-900 text-slate-200 border-purple-800 border-l-2">
+    <section className="sm:w-2/5 w-screen h-full flex flex-col justify-center items-center bg-zinc-900 text-slate-200 border-purple-800 border-t-2 sm:border-l-2 sm:border-t-0">
       {breakTime ? (
         <div>
           <p className="font-Ubuntu text-xs text-slate-300">

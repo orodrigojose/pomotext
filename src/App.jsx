@@ -10,7 +10,10 @@ function App() {
   useEffect(() => inputRef.current.focus(), []);
 
   return (
-    <div className="flex flex-row w-screen h-screen" onClick={() => inputRef.current.focus()}>
+    <div
+      className="flex flex-col w-screen h-screen sm:flex-row"
+      onClick={() => inputRef.current.focus()}
+    >
       <Terminal
         inputRef={inputRef}
         avaliableCommands={avaliableCommands}
