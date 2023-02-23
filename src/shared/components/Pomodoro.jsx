@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { PomodoroContext } from "../context/PomodoroContext";
 
+import StatusBar from "./StatusBar";
+
 const parseTime = (time) => (time < 10 ? `0${time}` : time);
 
-export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
+export default function Pomodoro({ customMinutes = 1, customSeconds = 0 }) {
   const { start } = useContext(PomodoroContext);
 
   const [minutes, setMinutes] = useState(customMinutes);
@@ -40,7 +42,7 @@ export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
   const timerSeconds = parseTime(seconds);
 
   return (
-    <section className="w-2/5 flex flex-col justify-center items-center bg-zinc-900 text-slate-200 border-purple-800 border-l-2">
+    <section className="w-2/5 h-full flex flex-col justify-center items-center bg-zinc-900 text-slate-200 border-purple-800 border-l-2">
       {breakTime ? (
         <div>
           <p className="font-Ubuntu text-xs text-slate-300">
@@ -57,6 +59,7 @@ export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
           {timerMinutes}:{timerSeconds}
         </h1>
       </div>
+      <StatusBar paused={start} breakTime={breakTime} />
     </section>
   );
 }
