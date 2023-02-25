@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { PomodoroContext } from "../context/PomodoroContext";
+import Notifyer from "../utils/notifyer";
 
 import StatusBar from "./StatusBar";
 
 const parseTime = (time) => (time < 10 ? `0${time}` : time);
 
-export default function Pomodoro({ customMinutes = 1, customSeconds = 0 }) {
+export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
   const { start } = useContext(PomodoroContext);
 
   const [minutes, setMinutes] = useState(customMinutes);
@@ -13,6 +15,18 @@ export default function Pomodoro({ customMinutes = 1, customSeconds = 0 }) {
   const [breakMinutes, setBreakMinutes] = useState(5);
 
   const [breakTime, setBreakTime] = useState(false);
+
+  async function showAlert({ title, message, icon, type }) {
+    try {
+      await Notifyer.init();
+    } catch (e) {
+      toast.error(e.message);
+    } finally {
+      Notifyer.notify({ title, body: message, icon });
+    }
+
+    toast[type](message);
+  }
 
   useEffect(() => {
     let interval = setInterval(() => {
@@ -30,6 +44,15 @@ export default function Pomodoro({ customMinutes = 1, customSeconds = 0 }) {
             setSeconds(seconds);
             setMinutes(minutes);
             setBreakTime((state) => !state);
+
+            showAlert({
+              title: !breakTime ? "Break Time!" : "Focusing...",
+              message: !breakTime
+                ? `New section starts in ${breakMinutes} minutes`
+                : "New section has been started",
+              type: "success",
+              icon: "/logo.png",
+            });
           }
         } else {
           setSeconds(seconds - 1);
