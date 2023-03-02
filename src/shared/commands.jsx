@@ -45,6 +45,10 @@ const avaliableCommands = {
           <span className="text-purple-600 font-bold">stop</span>
           <p className="text-slate-300">stop pomodoro timer</p>
         </li>
+        <li className="flex gap-11">
+          <span className="text-purple-600 font-bold">clear</span>
+          <p className="text-slate-300">clear the previous commands</p>
+        </li>
       </ul>
     ),
   },
