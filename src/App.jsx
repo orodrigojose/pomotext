@@ -10,7 +10,12 @@ import Notifyer from "./shared/utils/notifyer";
 
 function App() {
   const inputRef = useRef();
-  const PS1 = "$ ";
+  const PS1 = (
+    <div className="flex align-baseline">
+      <p className="text-purple-600">pomotext</p>
+      <p className="text-blue-500">:~$</p>
+    </div>
+  );
 
   useEffect(() => {
     async function getNotifyerAccess() {
