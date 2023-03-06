@@ -1,17 +1,29 @@
 import Terminal from "./shared/components/Terminal";
 import Pomodoro from "./shared/components/Pomodoro";
 
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useRef } from "react";
 import avaliableCommands from "./shared/commands";
+import Notifyer from "./shared/utils/notifyer";
 
 function App() {
   const inputRef = useRef();
   const PS1 = "$ ";
 
-  useEffect(() => inputRef.current.focus(), []);
+  useEffect(() => {
+    async function getNotifyerAccess() {
+      try {
+        await Notifyer.init();
+      } catch (e) {
+        toast.error(e.message);
+      }
+    }
+
+    getNotifyerAccess();
+    inputRef.current.focus();
+  }, []);
 
   return (
     <div

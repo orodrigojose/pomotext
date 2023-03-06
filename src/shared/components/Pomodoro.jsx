@@ -17,14 +17,7 @@ export default function Pomodoro({ customMinutes = 25, customSeconds = 0 }) {
   const [breakTime, setBreakTime] = useState(false);
 
   async function showAlert({ title, message, icon, type }) {
-    try {
-      await Notifyer.init();
-    } catch (e) {
-      toast.error(e.message);
-    } finally {
-      Notifyer.notify({ title, body: message, icon });
-    }
-
+    Notifyer.notify({ title, body: message, icon });
     toast[type](message);
   }
 
