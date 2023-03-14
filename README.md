@@ -66,7 +66,7 @@ To contribute to the project, follow the next steps:
 
 1. Fork this repository.
 2. Create an branch: `git checkout -b <branch_name>`.
-3. Make your changes and commit them using conventional commits, i recommend using (padroes-de-commits)[https://github.com/iuricode/padroes-de-commits] as a reference for your commits
+3. Make your changes and commit them using conventional commits, i recommend using [padroes-de-commits](https://github.com/iuricode/padroes-de-commits) as a reference for your commits
 4. Send for the original branch: `git push origin <nome_do_projeto> / <local>`
 5. Create the pull request(PR).
 
