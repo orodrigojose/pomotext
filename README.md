@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/rodrigosj7/pomotext">
+  <a href="https://github.com/orodrigojose/pomotext">
     <img src="./public/logo.png" alt="Logo" width="120" height="120">
   </a>
 
@@ -19,7 +19,7 @@
       <img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https://pomotext.netlify.app/" alt="online badge" />
     </a>
     <a href="">
-      <img src="https://img.shields.io/github/stars/rodrigosj7/pomotext?logo=github" alt="stars badge"/>
+      <img src="https://img.shields.io/github/stars/orodrigojose/pomotext?logo=github" alt="stars badge"/>
     </a>
   </p>
 </div>
@@ -43,7 +43,7 @@ This project it's a simple pomodoro timer that uses commands to operate it
 
 ### Installing
 
-* To execute project locally you need fork it `git clone https://github.com/rodrigosj7/pomotext.git`
+* To execute project locally you need fork it `git clone https://github.com/orodrigojose/pomotext.git`
 * Then go to the project folder and execute `npm i` to install the necessary dependencies
 
 ### Executing program locally
@@ -103,7 +103,7 @@ Inspiration
 
 ---
 
-Made with 💜 by Rodrigo José(rodrigosj7)
+Made with 💜 by Rodrigo José(orodrigojose)
 
 ---
 
